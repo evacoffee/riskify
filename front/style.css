@@ -102,3 +102,318 @@ herooooo
     margin-bottom: 20px;
 }
 
+.hero h1 {
+    font-size: clamp(45px, 6vw, 75px);
+    line-height: 1.05;
+    max-width: 650px;
+    letter-spacing: -3px;
+}
+
+.hero h1 span {
+    color: var(--blue-light);
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 18px;
+    max-width: 550px;
+    margin: 25px 0 35px;
+}
+
+.primary-button,
+.analyze-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border: none;
+    border-radius: 9px;
+    background: var(--blue);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.primary-button:hover,
+.analyze-button:hover {
+    background: var(--blue-light);
+    transform: translateY(-2px);
+}
+
+/* ------------------
+head graphh
+--------------------- */
+.chart-card {
+    padding: 30px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.chart-header p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.chart-header h3 {
+    font-size: 30px;
+}
+
+.positive {
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.chart {
+    height: 260px;
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+}
+
+.line,
+.fake-line {
+    position: absolute;
+    width: 120%;
+    height: 100%;
+    left: -10%;
+    background: none;
+    border-top: 4px solid var(--blue-light);
+    transform: rotate(-8deg);
+    top: 40%;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--blue-bright);
+    position: absolute;
+    box-shadow: 0 0 15px var(--blue-light);
+}
+
+.dot1{
+    left: 10%;
+    top: 65%;
+}
+
+.dot2{
+    left: 30%;
+    top: 50%;
+}
+
+.dot3{
+    left: 50%;
+    top: 55%;
+}
+
+.dot4{
+    left: 70%;
+    top: 25%;
+}
+
+.dot5{
+    left: 90%;
+    top: 15%;
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+/* ------------------
+anazlerr
+--------------------- */
+.analyzer-section,
+.results-section,
+.about-section {
+    padding: 100px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: var(--muted);
+}
+
+.analyzer-card {
+    max-width: 900px;
+    margin: auto;
+    padding: 35px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+}
+
+.input-section {
+    margin-bottom: 40px;
+}
+
+label {
+    display: block;
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.money-input {
+    display: flex;
+    align-items: center;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 0 15 px;
+}
+
+.money-input span {
+    color: var(--blue-light);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.money-input input {
+    border: none;
+    background: transparent;
+    color: white;
+    outline: none;
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+}
+
+.assets-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.assets-header h3 {
+    font-size: 20px;
+}
+
+.assets-header p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.secondary-button {
+    padding: 10px 15px;
+    background: transparent;
+    color: var(--blue-light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.secondary-button:hover {
+    background: var(--card-light);
+}
+
+.asset-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 40px;
+    gap: 15px;
+    align-items: end;
+    margin-bottom: 15px;
+}
+
+.asset-row input {
+    width: 100%;
+    padding: 13px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--background);
+    color: white;
+    outline: none;
+}
+
+.asset-row input:focus,
+.money-input:focus-within {
+    border-color: var(--blue);
+}
+
+.percentage-input input {
+    border: none;
+    background: transparent;
+}
+
+.percentage-input span {
+    color: var(--muted);
+    padding-right: 12px;
+}
+
+.remove-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.remove-button:hover {
+    color: var(--red);
+    border-color: var(--red);
+}
+
+.portfolio-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    margin-top: 25px;
+    border-top: 1px solid var(-border);
+    color: var(--muted);
+}
+
+.portfolio-total strong {
+    color: var(--blue-bright);
+}
+
+.error-message {
+    color: var(--red);
+    font-size: 14px;
+    margin-bottom 15px;
+}
+
+.analyze-button {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+}
+
+/* ---------------------
+results
+------------------------ */
+.hidden {
+    display: none;
+}
+
