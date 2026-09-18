@@ -48,3 +48,57 @@ navagations
     top: 0;
     z-index: 100;
 }
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo span {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: var(--blue);
+    color: white;
+}
+
+.nav-links {
+    color: var(--muted);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.nav-links:hover {
+    color: white;
+}
+
+/* ------------------
+herooooo
+--------------------- */
+.hero {
+    min-height: 700px;
+    padding: 100px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 70px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 7px 13px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    color: var(--blue-bright);
+    background: rgba(22, 119, 225, 0.08);
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
