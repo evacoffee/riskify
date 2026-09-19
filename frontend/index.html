@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>riskify | portfolio risk analyzer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <span>R</span> riskify
+        </div>
+
+        <div class="nav-links">
+            <a href="#analyzer">Analyzer</a>
+            <a href="#about">About</a>
+        </div>
+    </nav>
+
+
+    <!-- Hero -->
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <p class="eyebrow">PORTFOLIO RISK MANAGEMENT</p>
+
+            <h1>
+                Understand your
+                <span>portfolio risk.</span>
+            </h1>
+
+            <p class="hero-description">
+                riskify analyzes your portfolio and turns financial data
+                into clear risk measurements.
+            </p>
+
+            <a href="#analyzer" class="primary-button">
+                Analyze Portfolio
+            </a>
+
+        </div>
+
+        <div class="hero-chart">
+
+            <div class="chart-header">
+                <span>Portfolio Performance</span>
+                <span class="positive">+12.48%</span>
+            </div>
+
+            <div class="chart">
+                <div class="chart-line"></div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Analyzer -->
+    <section id="analyzer" class="analyzer-section">
+
+        <div class="section-heading">
+
+            <p class="eyebrow">PORTFOLIO ANALYZER</p>
+
+            <h2>Analyze your portfolio</h2>
+
+            <p>
+                enter your portfolio information below to calculate
+                important risk measurements.
+            </p>
+
+        </div>
+
+
+        <div class="analyzer-card">
+
+            <!-- Portfolio Value -->
+            <div class="input-group">
+
+                <label for="portfolioValue">
+                    Portfolio Value
+                </label>
+
+                <div class="input-with-symbol">
+                    <span>$</span>
+
+                    <input
+                        type="number"
+                        id="portfolioValue"
+                        placeholder="10000"
+                        min="0"
+                    >
+                </div>
+
+            </div>
+
+
+            <!-- Assets -->
+            <div class="assets-header">
+
+                <div>
+                    <h3>Portfolio Assets</h3>
+
+                    <p>
+                        add the stocks or assets in your portfolio.
+                    </p>
+                </div>
+
+                <button id="addAssetButton" class="secondary-button">
+                    + Add Asset
+                </button>
+
+            </div>
+
+
+            <div id="assetsContainer">
+
+                <div class="asset-row">
+
+                    <div class="asset-input">
+                        <label>Ticker</label>
+
+                        <input
+                            type="text"
+                            class="ticker"
+                            placeholder="AAPL"
+                        >
+                    </div>
+
+                    <div class="asset-input">
+                        <label>Weight</label>
+
+                        <div class="weight-input">
+                            <input
+                                type="number"
+                                class="weight"
+                                placeholder="50"
+                                min="0"
+                                max="100"
+                            >
+                            <span>%</span>
+                        </div>
+                    </div>
+
+                    <button class="remove-asset" type="button">
+                        ×
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Total Weight -->
+            <div class="weight-summary">
+
+                <span>Total Weight</span>
+
+                <strong id="totalWeight">
+                    50%
+                </strong>
+
+            </div>
+
+
+            <!-- Analyze Button -->
+            <button id="analyzeButton" class="analyze-button">
+                Analyze Portfolio
+            </button>
+
+            <p id="errorMessage" class="error-message"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Results -->
+    <section id="results" class="results-section">
+
+        <div class="section-heading">
+
+            <p class="eyebrow">RISK RESULTS</p>
+
+            <h2>Portfolio Risk Overview</h2>
+
+        </div>
+
+
+        <div class="results-grid">
+
+            <div class="result-card">
+
+                <span>Expected Return</span>
+
+                <strong id="expectedReturn">
+                    8.42%
+                </strong>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>Volatility</span>
+
+                <strong id="volatility">
+                    14.67%
+                </strong>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>Sharpe Ratio</span>
+
+                <strong id="sharpeRatio">
+                    0.57
+                </strong>
+
+            </div>
+
+
+            <div class="result-card risk-card">
+
+                <span>95% VaR</span>
+
+                <strong id="var">
+                    $842
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- Allocation -->
+        <div class="allocation-card">
+
+            <h3>Portfolio Allocation</h3>
+
+            <div id="allocationResults">
+
+                <div class="allocation-row">
+                    <span>AAPL</span>
+
+                    <div class="allocation-bar">
+                        <div style="width: 50%;"></div>
+                    </div>
+
+                    <strong>50%</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- About -->
+    <section id="about" class="about-section">
+
+        <div class="section-heading">
+
+            <p class="eyebrow">ABOUT RISKIFY</p>
+
+            <h2>financial risk, yay.</h2>
+
+            <p>
+                riskify is a portfolio risk analysis tool used to help people
+                with financal risks.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- footer -->
+    <footer>
+        <div class="logo">
+            <span>R</span> Riskify
+        </div>
+        <p>
+            portfolio risk analysis & financial modeling
+        </p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
