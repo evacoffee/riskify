@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
 :root {
     --background-color: #061a2d;
     --card: #0B2945;
@@ -26,13 +28,26 @@ html {
     scroll-behavior: smooth;
 }
 
-body { 
-    font-family: Ariel, Helvetica, sans-serif;
-    background: var(--background);
-    color: var(--text);
-    line-height: 1.6;
+body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: #061A2D;
+    color: #F4F9FF;
+    font-weight: 500;
+    
 }
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input,
+label,
+a {
+    font-family: 'Nunito', sans-serif;
+}
 /* ------------------
 navagations
 -------------------- */
@@ -103,10 +118,12 @@ herooooo
 }
 
 .hero h1 {
+    font-family: 'Nunito', sans-serif;
     font-size: clamp(45px, 6vw, 75px);
+    font-weight: 900;
     line-height: 1.05;
     max-width: 650px;
-    letter-spacing: -3px;
+    letter-spacing: -2px;
 }
 
 .hero h1 span {
