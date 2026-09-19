@@ -401,7 +401,7 @@ label {
 .error-message {
     color: var(--red);
     font-size: 14px;
-    margin-bottom 15px;
+    margin-bottom: 15px;
 }
 
 .analyze-button {
@@ -417,3 +417,144 @@ results
     display: none;
 }
 
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    max-width: 1100px;
+    margin: auto auto 25px;
+}
+
+.metric-card {
+    padding: 25px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.metric-card p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.metric-card h3 {
+    font-size: 30px;
+    margin: 8px 0;
+}
+
+.metric-card span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.results-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.result-card {
+    padding: 25px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.result-card p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.result-card h3 {
+    margin-top: 5px;
+}
+
+.fake-chart {
+    height: 300px;
+    margin-top: 25px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+}
+
+.fake-line {
+    top: 45%;
+    transform: rotate(-10deg);
+}
+
+/* --------------------------
+about
+----------------------------- */
+.about-section {
+    border-top: 1px soild var(--border);
+    text-align: center;
+}
+
+.about-content {
+    max-width: 700px;
+    margin: auto;
+}
+
+.about-content h2 {
+    font-size: 40px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    color: var(--muted);
+    font-size: 17px;
+}
+
+/*----------------------------
+footer
+------------------------------*/
+footer {
+    padding: 40px 8%;
+    border-top: 1 px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* ------------------------------
+mobile
+--------------------------------- */
+@media (max-width: 800px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 70px;
+    }
+    
+    .hero-graphic {
+        display: none;
+    }
+
+    .metrics {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .asset-row {
+        grid-template-columns: 1fr 1fr 35px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
