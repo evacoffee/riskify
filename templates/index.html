@@ -3,90 +3,280 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Riskify | Quant Research Lab</title>
+    <title>riskify | quant research lab</title>
 
     <link
         rel="stylesheet"
         href="{{ url_for('static', filename='style.css') }}"
     >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 </head>
 
 <body>
 
-    <h1>Riskify</h1>
+    <!-- NAVIGATION -->
 
-    <p>Quant Research Lab</p>
+    <nav class="navbar">
 
-    <form method="POST">
+        <div class="logo">
+            riskify<span>.</span>
+        </div>
 
-        <label>Stock ticker</label>
+        <div class="nav-label">
+            QUANT RESEARCH LAB
+        </div>
 
-        <input
-            type="text"
-            name="ticker"
-            placeholder="AAPL"
-            required
-        >
-
-        <br><br>
-
-        <label>Start date</label>
-
-        <input
-            type="date"
-            name="start"
-            required
-        >
-
-        <br><br>
-
-        <label>End date</label>
-
-        <input
-            type="date"
-            name="end"
-            required
-        >
-
-        <br><br>
-
-        <button type="submit">
-            Run Backtest
-        </button>
-
-    </form>
+    </nav>
 
 
-    {% if results %}
+    <!-- HERO -->
 
-    <hr>
+    <main>
 
-    <h2>
-        Results for {{ results.ticker }}
-    </h2>
+        <section class="hero">
 
-    <p>
-        Total Return:
-        {{ "%.2f"|format(results.metrics.total_return * 100) }}%
-    </p>
+            <div class="hero-small">
+                /01 — QUANTITATIVE FINANCE
+            </div>
 
-    <p>
-        Volatility:
-        {{ "%.2f"|format(results.metrics.volatility * 100) }}%
-    </p>
+            <h1>
+                BUILD.
+                <br>
+                TEST.
+                <br>
+                <span>MEASURE.</span>
+            </h1>
 
-    <p>
-        Sharpe Ratio:
-        {{ "%.2f"|format(results.metrics.sharpe) }}
-    </p>
+            <div class="hero-bottom">
 
-    <p>
-        Maximum Drawdown:
-        {{ "%.2f"|format(results.metrics.max_drawdown * 100) }}%
-    </p>
+                <p>
+                    does quantitative research and historical market data
+                    to give you accurate data.
+                </p>
 
-    {% endif %}
+                <div class="hero-number">
+                    01
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="research-section">
+
+            <div class="section-label">
+                /02 — STRATEGY LAB
+            </div>
+
+            <div class="research-grid">
+
+                <div class="research-title">
+
+                    <h2>
+                        RUN A
+                        <br>
+                        <span>BACKTEST.</span>
+                    </h2>
+
+                </div>
+
+
+                <div class="form-card">
+
+                    <div class="card-top">
+                        <span>BACKTEST CONFIGURATION</span>
+                        <span>RISKIFY_001</span>
+                    </div>
+
+
+                    <form method="POST">
+
+                        <div class="input-group">
+
+                            <label for="ticker">
+                                STOCK TICKER
+                            </label>
+
+                            <input
+                                id="ticker"
+                                type="text"
+                                name="ticker"
+                                placeholder="AAPL"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="date-grid">
+
+                            <div class="input-group">
+
+                                <label for="start">
+                                    START DATE
+                                </label>
+
+                                <input
+                                    id="start"
+                                    type="date"
+                                    name="start"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label for="end">
+                                    END DATE
+                                </label>
+
+                                <input
+                                    id="end"
+                                    type="date"
+                                    name="end"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <button type="submit">
+                            RUN BACKTEST
+                            <span>→</span>
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        {% if results %}
+
+        <section class="results-section">
+
+            <div class="section-label">
+                /03 — RESEARCH RESULTS
+            </div>
+
+
+            <div class="results-header">
+
+                <div>
+
+                    <div class="result-ticker">
+                        {{ results.ticker }}
+                    </div>
+
+                    <h2>
+                        STRATEGY
+                        <span>RESULTS.</span>
+                    </h2>
+
+                </div>
+
+                <div class="result-status">
+                    BACKTEST COMPLETE
+                </div>
+
+            </div>
+
+
+            <div class="metrics-grid">
+
+
+                <div class="metric-card featured">
+
+                    <div class="metric-label">
+                        TOTAL RETURN
+                    </div>
+
+                    <div class="metric-value">
+                        {{ "%.2f"|format(results.metrics.total_return * 100) }}%
+                    </div>
+
+                </div>
+
+
+                <div class="metric-card">
+
+                    <div class="metric-label">
+                        SHARPE RATIO
+                    </div>
+
+                    <div class="metric-value">
+                        {{ "%.2f"|format(results.metrics.sharpe) }}
+                    </div>
+
+                </div>
+
+
+                <div class="metric-card">
+
+                    <div class="metric-label">
+                        VOLATILITY
+                    </div>
+
+                    <div class="metric-value">
+                        {{ "%.2f"|format(results.metrics.volatility * 100) }}%
+                    </div>
+
+                </div>
+
+
+                <div class="metric-card">
+
+                    <div class="metric-label">
+                        MAX DRAWDOWN
+                    </div>
+
+                    <div class="metric-value">
+                        {{ "%.2f"|format(results.metrics.max_drawdown * 100) }}%
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="data-note">
+
+                <span>●</span>
+
+                results generated using historical market data
+                and riskify's quantitative backtesting engine.
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+    </main>
+
+    <footer>
+
+        <div class="footer-logo">
+            riskify<span>.</span>
+        </div>
+
+        <div>
+            QUANTITATIVE RESEARCH / 2026
+        </div>
+
+    </footer>
 
 </body>
 
