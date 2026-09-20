@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        riskify | analysis results
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <nav>
+
+        <a
+            href="/"
+            class="logo"
+        >
+            <span>R</span>
+            Riskify
+        </a>
+
+        <div class="nav-links">
+
+            <a href="/">
+                New Analysis
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main>
+
+        <section class="results-hero">
+
+            <div class="eyebrow">
+                ANALYSIS COMPLETE
+            </div>
+
+            <p>
+                Portfolio value:
+                <strong>
+                    ${{ "{:,.2f}".format(portfolio_value) }}
+                </strong>
+            </p>
+
+        </section>
+
+
+        <!-- Main metrics -->
+
+        <section class="metrics">
+
+            <div class="metric-card">
+
+                <span>
+                    Expected Return
+                </span>
+
+                <strong>
+                    {{ "{:.2f}".format(expected_return) }}%
+                </strong>
+
+                <small>
+                    Annualized estimate
+                </small>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span>
+                    Volatility
+                </span>
+
+                <strong>
+                    {{ "{:.2f}".format(volatility) }}%
+                </strong>
+
+                <small>
+                    Annualized
+                </small>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span>
+                    Sharpe Ratio
+                </span>
+
+                <strong>
+                    {{ "{:.2f}".format(sharpe) }}
+                </strong>
+
+                <small>
+                    risk-adjusted return
+                </small>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span>
+                    95% VaR
+                </span>
+
+                <strong>
+                    ${{ "{:,.2f}".format(var_95) }}
+                </strong>
+
+                <small>
+                    historical daily VaR
+                </small>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span>
+                    maximum drawdown
+                </span>
+
+                <strong>
+                    {{ "{:.2f}".format(max_drawdown) }}%
+                </strong>
+
+                <small>
+                    largest historical decline
+                </small>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span>
+                    Beta
+                </span>
+
+                <strong>
+                    {{ "{:.2f}".format(beta) }}
+                </strong>
+
+                <small>
+                    Compared with SPY
+                </small>
+
+            </div>
+
+        </section>
+
+        <section class="result-section">
+
+            <div class="section-heading">
+
+                <div class="eyebrow">
+                    ALLOCATION
+                </div>
+
+                <h2>
+                    where your money is sitting.
+                </h2>
+
+            </div>
+
+
+            <div class="allocation-card">
+
+                {% for asset in allocation %}
+
+                <div class="allocation-row">
+
+                    <div>
+
+                        <strong>
+                            {{ asset.ticker }}
+                        </strong>
+
+                        <span>
+                            ${{ "{:,.2f}".format(asset.value) }}
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        {{ "{:.1f}".format(asset.weight) }}%
+                    </strong>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+
+        <!-- Portfolio graph -->
+
+        <section class="result-section">
+
+            <div class="section-heading">
+
+                <div class="eyebrow">
+                    HISTORICAL PERFORMANCE
+                </div>
+
+                <h2>
+                    what happened over the last year?
+                </h2>
+
+            </div>
+
+            <div class="graph-card">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='generated/' + history_graph
+                    ) }}"
+                    alt="Portfolio history graph"
+                >
+
+            </div>
+
+        </section>
+
+        <section class="result-section">
+
+            <div class="section-heading">
+
+                <div class="eyebrow">
+                    DRAWDOWN
+                </div>
+
+                <h2>
+                    how bad were the low days?
+                </h2>
+
+            </div>
+
+            <div class="graph-card">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='generated/' + drawdown_graph
+                    ) }}"
+                    alt="Portfolio drawdown graph"
+                >
+
+            </div>
+
+        </section>
+
+        <section class="result-section">
+
+            <div class="section-heading">
+
+                <div class="eyebrow">
+                    MONTE CARLO
+                </div>
+
+            </div>
+
+
+            <div class="graph-card">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='generated/' + monte_carlo_graph
+                    ) }}"
+                    alt="Monte Carlo simulation"
+                >
+
+            </div>
+
+
+            <div class="simulation-stats">
+
+                <div>
+
+                    <span>
+                        5th percentile
+                    </span>
+
+                    <strong>
+                        ${{ "{:,.2f}".format(monte_carlo.worst_5) }}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Median
+                    </span>
+
+                    <strong>
+                        ${{ "{:,.2f}".format(monte_carlo.median) }}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        95th percentile
+                    </span>
+
+                    <strong>
+                        ${{ "{:,.2f}".format(monte_carlo.best_5) }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="result-section">
+
+            <div class="section-heading">
+
+                <div class="eyebrow">
+                    CORRELATION
+                </div>
+
+                <h2>
+                    how much do your assets move together?
+                </h2>
+
+            </div>
+
+            <div class="graph-card">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='generated/' + correlation_graph
+                    ) }}"
+                    alt="Asset correlation matrix"
+                >
+
+            </div>
+
+        </section>
+
+
+        <section class="results-footer">
+
+            <h2>
+                analysis complete.
+            </h2>
+
+            <a
+                href="/"
+                class="button"
+            >
+                analyze another portfolio ->
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="logo">
+
+            <span>R</span>
+            riskify
+
+        </div>
+
+        <p>
+            built with Python and caffeine.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
