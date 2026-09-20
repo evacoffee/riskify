@@ -2,256 +2,91 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>riskify | portfolio risk analysis</title>
+    <title>Riskify | Quant Research Lab</title>
 
     <link
         rel="stylesheet"
         href="{{ url_for('static', filename='style.css') }}"
     >
-
 </head>
 
 <body>
 
-    <nav>
+    <h1>Riskify</h1>
 
-        <a
-            href="/"
-            class="logo"
-        >
-            <span>R</span>
-            riskify
-        </a>
+    <p>Quant Research Lab</p>
 
-        <div class="nav-links">
+    <form method="POST">
 
-            <a href="#analyzer">
-                Analyzer
-            </a>
+        <label>Stock ticker</label>
 
-            <a href="#about">
-                About
-            </a>
-
-        </div>
-
-    </nav>
-
-
-    <main>
-
-        <section class="hero">
-
-            <div>
-
-                <div class="eyebrow">
-                    PORTFOLIO RISK ANALYSIS
-                </div>
-
-                <p class="hero-text">
-                    riskify uses real market data and quantitative
-                    financial models to analyze your portfolio.
-                </p>
-
-                <a
-                    href="#analyzer"
-                    class="button"
-                >
-                    analyze my portfolio ->
-                </a>
-
-            </div>
-
-        <section
-            id="analyzer"
-            class="section"
+        <input
+            type="text"
+            name="ticker"
+            placeholder="AAPL"
+            required
         >
 
-            <div class="section-heading">
+        <br><br>
 
-                <div class="eyebrow">
-                    ANALYZER
-                </div>
+        <label>Start date</label>
 
-                <h2>
-                    give it some numbers
-                </h2>
-
-                <p>
-                    riskify will handle the math
-                </p>
-
-            </div>
-
-
-            {% if error %}
-
-            <div class="error">
-                <strong>uh oh. lemme fix that</strong>
-
-                <p>
-                    {{ error }}
-                </p>
-            </div>
-
-            {% endif %}
-
-
-            <form
-                action="/analyze"
-                method="POST"
-                class="analyzer-card"
-            >
-
-                <div class="input-group">
-
-                    <label for="portfolio_value">
-                        portfolio value
-                    </label>
-
-                    <div class="money-input">
-
-                        <span>$</span>
-
-                        <input
-                            id="portfolio_value"
-                            name="portfolio_value"
-                            type="number"
-                            min="1"
-                            step="0.01"
-                            value="10000"
-                            required
-                        >
-
-                    </div>
-
-                </div>
-
-
-                <div class="assets-header">
-
-                    <div>
-
-                        <h3>
-                            portfolio assets
-                        </h3>
-
-                        <p>
-                            enter your ticker symbols and portfolio weights.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                {% for i in range(8) %}
-
-                <div class="asset-row">
-
-                    <div>
-
-                        <label>
-                            Ticker
-                        </label>
-
-                        <input
-                            type="text"
-                            name="ticker"
-                            placeholder="AAPL"
-                        >
-
-                    </div>
-
-
-                    <div>
-
-                        <label>
-                            Weight %
-                        </label>
-
-                        <input
-                            type="number"
-                            name="weight"
-                            min="0"
-                            max="100"
-                            step="0.1"
-                            placeholder="25"
-                        >
-
-                    </div>
-
-                </div>
-
-                {% endfor %}
-
-
-                <button
-                    type="submit"
-                    class="button analyze-button"
-                >
-                    analyze portfolio ->
-                </button>
-
-                <p class="form-note">
-                    weights must add up to 100%.
-                </p>
-
-            </form>
-
-        </section>
-
-
-        <section
-            id="about"
-            class="section about"
+        <input
+            type="date"
+            name="start"
+            required
         >
 
-            <div class="section-heading">
+        <br><br>
 
-                <div class="eyebrow">
-                    ABOUT RISKIFY
-                </div>
+        <label>End date</label>
 
-                <h2>
-                    portfolio risk help
-                </h2>
+        <input
+            type="date"
+            name="end"
+            required
+        >
 
-                <p>
-                    riskify uses Python, historical market data,
-                    statistical analysis, and Monte Carlo simulation graphs
-                    to evaluate portfolio risk.
-                </p>
+        <br><br>
 
-            </div>
+        <button type="submit">
+            Run Backtest
+        </button>
 
-        </section>
-
-    </main>
+    </form>
 
 
-    <footer>
+    {% if results %}
 
-        <div class="logo">
+    <hr>
 
-            <span>R</span>
-            riskify
+    <h2>
+        Results for {{ results.ticker }}
+    </h2>
 
-        </div>
+    <p>
+        Total Return:
+        {{ "%.2f"|format(results.metrics.total_return * 100) }}%
+    </p>
 
-        <p>
-            built with Python and caffeine.
-        </p>
+    <p>
+        Volatility:
+        {{ "%.2f"|format(results.metrics.volatility * 100) }}%
+    </p>
 
-    </footer>
+    <p>
+        Sharpe Ratio:
+        {{ "%.2f"|format(results.metrics.sharpe) }}
+    </p>
+
+    <p>
+        Maximum Drawdown:
+        {{ "%.2f"|format(results.metrics.max_drawdown * 100) }}%
+    </p>
+
+    {% endif %}
 
 </body>
 

@@ -1,3 +1,0 @@
-"""
-riskify quantitative finance engine
-"""
