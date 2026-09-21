@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 def run_backtest(data):
     data = data.copy()
@@ -35,3 +36,21 @@ def calculate_metrics(data):
         "sharpe": sharpe,
         "max_drawdown": max_drawdown
     }
+
+
+def create_performance_chart(data, filename):
+    plt.figure(figsize=(12, 6))
+    plt.plot(
+        data.index, data["Strategy_Value"], label="Strategy"
+    )
+    plt.plot(
+        data.index, data["Buy_Hold_Value"], label="Buy & Hold"
+    )
+    plt.title("Strategy Performance")
+    plt.xlabel("Date")
+    plt.ylabel("Portfolio Value")
+    plt.legend()
+    plt.grid(True, alpha=0.2)
+    plt.tight_layout()
+    plt.savefig(filename)
+    plt.close()
