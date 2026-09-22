@@ -54,3 +54,19 @@ def create_performance_chart(data, filename):
     plt.tight_layout()
     plt.savefig(filename)
     plt.close()
+
+def create_drawdown_chart(data, filename):
+    drawdown = (
+        data["Strategy_Value"] / data["Strategy_Value"].cummax()
+    ) - 1
+    plt.figure(figsize=(12, 4))
+    plt.fill_between(
+        drawdown.index, drawdown, 0, color="#D9A441", alpha=0.6 
+    )
+    plt.title("Drawdown")
+    plt.xlabel("Date")
+    plt.ylabel("Drawdown")
+    plt.grid(True, alpha=0.2)
+    plt.tight_layout()
+    plt.savefig(filename)
+    plt.close()

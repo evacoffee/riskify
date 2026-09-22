@@ -19,9 +19,8 @@
     >
 </head>
 
-<body>
+<body {% if results %}onload="document.getElementById('results').scrollIntoView({ behavior: 'smooth' });"{% endif %}></body>
 
-    <!-- NAVIGATION -->
 
     <nav class="navbar">
 
@@ -36,8 +35,6 @@
     </nav>
 
 
-    <!-- HERO -->
-
     <main>
 
         <section class="hero">
@@ -47,11 +44,11 @@
             </div>
 
             <h1>
-                BUILD.
+                uhm
                 <br>
-                TEST.
+                risky
                 <br>
-                <span>MEASURE.</span>
+                <span>business</span>
             </h1>
 
             <div class="hero-bottom">
@@ -72,7 +69,7 @@
         <section class="research-section">
 
             <div class="section-label">
-                /02 — STRATEGY LAB
+                /02 — strategy
             </div>
 
             <div class="research-grid">
@@ -80,9 +77,9 @@
                 <div class="research-title">
 
                     <h2>
-                        RUN A
+                        run a
                         <br>
-                        <span>BACKTEST.</span>
+                        <span>backtest</span>
                     </h2>
 
                 </div>
@@ -111,6 +108,44 @@
                                 placeholder="AAPL"
                                 required
                             >
+
+                        </div>
+
+                        <div class="date-grid">
+
+                            <div class="input-group">
+
+                                <label for="short_window">
+                                    SHORT MA
+                                </label>
+
+                                <input
+                                    id="short_window"
+                                    type="number"
+                                    name="short_window"
+                                    value="20"
+                                    min="1"
+                                    required
+                                >
+
+                            </div>
+
+                            <div class="input-group">
+
+                                <label for="long_window">
+                                    LONG MA
+                                </label>
+
+                                <input
+                                    id="long_window"
+                                    type="number"
+                                    name="long_window"
+                                    value="50"
+                                    min="2"
+                                    required
+                                >
+
+                            </div>
 
                         </div>
 
@@ -166,7 +201,7 @@
 
         {% if results %}
 
-        <section class="results-section">
+        <section class="results-section" id="results">
 
             <div class="section-label">
                 /03 — RESEARCH RESULTS
@@ -181,9 +216,15 @@
                         {{ results.ticker }}
                     </div>
 
+                    <div class="strategy-settings">
+                        MA {{ results.short_window }}
+                        /
+                        MA {{ results.long_window }}
+                    </div>
+
                     <h2>
-                        STRATEGY
-                        <span>RESULTS.</span>
+                        strategy
+                        <span>results.</span>
                     </h2>
 
                 </div>
@@ -257,14 +298,33 @@
                 </div>
 
                 <h3>
-                    STRATEGY VS.
-                    <span>BUY & HOLD.</span>
+                    strategy vs.
+                    <span>buy & hold.</span>
                 </h3>
                 
                 <div class="chart-container">
                     <img
                         src="{{ url_for('static', filename='performance.png') }}"
                         alt="Strategy performance chart"
+                    >
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <div class="chart-label">
+                    risk
+                </div>
+                
+                <h3>
+                    drawdown
+                    <span>analysis</span>
+                </h3>
+
+                <div class="chart-container">
+                    <img
+                        src="{{ url_for('static',
+                        filename='drawdown.png') }}"
+                        alt="Drawdown Chart"
                     >
                 </div>
             </div>
