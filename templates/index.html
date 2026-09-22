@@ -185,6 +185,14 @@
 
                         </div>
 
+                            <div class="input-group">
+                                <label for="strategy">strategy</label>
+
+                                <select id="strategy" name="strategy">
+                                    <option value="moving_average">moving average</option>
+                                    <option value="momentum">momentum</option>
+                                </select>
+                            </div>
 
                         <button type="submit">
                             RUN BACKTEST
@@ -217,9 +225,7 @@
                     </div>
 
                     <div class="strategy-settings">
-                        MA {{ results.short_window }}
-                        /
-                        MA {{ results.long_window }}
+                        MA {{ results.short_window }} / MA {{ results.long_window }}
                     </div>
 
                     <h2>
